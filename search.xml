@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[NodeJs学习记录一]]></title>
+    <url>%2F2016%2F09%2F10%2FNodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[NodeJS的基本概念NodeJS是什么？ ​ Node官网 官网介绍： Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world. js能做什么事? js ---&gt; 浏览器中运行(面向过程---&gt;面向对象) js ---&gt; 后台开发 NodeJS就是使用js代码，来做后台开发 使用NodeJS可以开启一个Web服务，给浏览器提供数据去 展示，并且接收浏览器提交过来的用户产生的数据，存储 到数据库中，方便后面使用(注册) NodeJS能做什么？1、提供数据给浏览器展示 2、保存用户提交过来的数据 3、数据统计与分析 怎么学习比较好1、看官方文档: API怎么用，缺点，都是一些零散的API，没有一个完整的Demo 英语不好就别看了，全英文 2、百度 node快速入门 node使用 3、专业Node的论坛【深入学习】 http://cnodejs.org/ 4、出错之后的网站: www.baidu.com www.stackoverflow.com 使用的时候，搜索英文关键字 Node服务器软件的安装与配置Node.exe的安装一直下一步就可以了 检测是否安装成功 node -v 另外一种安装node的方式 nvm这个软件来安装 node version manger,如果你想同时安装多个node版本 教程:http://www.jianshu.com/p/07c3456e875a 前提: 如果使用我们的nvm安装node，那原先的node得干掉 步骤: 1、安装nvm这个软件: https://github.com/coreybutler/nvm-windows/releases 2、使用上面装好的nvm软件，安装我们需要的node版本了 指令: nvm install 具体的版本号就行了(https://nodejs.org/en/download/releases/) nvm uninstall 具体的版本号 nvm list 查看当前安装了哪些版本 nvm use 具体版本号，切换到某个版本 建议: 你安装一个高一点的稳定的版本即可，因为我们的软件都是向下兼容 系统环境变量及其作用系统环境变量每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作 那配置了环境变量能做到什么事呢？ 在我们终端的任何一个目录下，都可以访问，配置在系统环境变量里面的可执行文件 如何将一个软件的可执行文件配置在我们的系统环境变量中? 步骤： 1、拷贝一个可执行文件所在的目录，比如node.exe所在的目录 `C:\Program Files\nodejs` 2、去系统(次计算机右键属性) &gt; 高级系统设置 &gt; 高级 &gt; 环境变量 &gt; 系统变量 &gt; Path &gt; 填写上你的目录 注意事项: 如果更改了系统的环境变量，就必须把终端重新启动 启动node.exe执行js代码启动(相当于启动Apache服务器)1、在我们的node的安装目录下，去双击我们node.exe 2、在终端输入 node即可 node.exe 退出我们的node.exe1、在终端中输入.exit 2、连续按住两次 CTRL + C 怎么去执行js代码1、直接在启动的node.exe中写代码(在开启的`REPL`环境中写代码执行)【了解】 缺点: 书写不方便，阅读起来也不方便 因为在我们的cmd中写的代码，是放在内存中的，一旦我们退出了node.exe，原先写的代码都没有了 2、把我们写好的代码放在一个单独的js文件中去执行 执行的时候，通过node.exe去执行，具体的写法是这样。（重点） 在终端中输入 node.exe 你要去执行的文件名称 注意点: 1、我们js代码不是在终端中运行的，只是借助终端去启动我们node.exe，并且最终将结果展现在终端里面而已 2、在运行时候，首先你的终端的目录得切换到你要执行的文件的目录下面去，然后使用node 文件名称执行即可 我们nodejs的代码是在一个叫做`REPL`环境中，执行的 REPLJS的执行执行js在浏览器端，我是是要依靠浏览器(js的解析引擎) 在服务器端 nodejs开启的REPL环境 官网的解释: 参考:http://shouce.qdfuns.com/nodejs/repl.html REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块内容空间里面就可以解释执行我们的js代码 例如: 在终端中输入了 node abc.js 做的事情就是，将abc.js中写好的js的逻辑代码扔在启动好的node的内容空间中去运行，我们把启动好的node的这块内存空间称之为REPL环境 模块化思想为什么前端需要有模块化1、解决全局变量名污染的问题 2、把相同功能的代码放在一个模块(一个js文件中)方便后期维护 NodeJS中是如何体现模块化ecmascript5 var function 1、Node本身是基于CommonJS规范， 参考:http://javascript.ruanyifeng.com/nodejs/module.html#toc0 2、Node作者在设计这门语言的时候，就严格按照CommonJS的规范， 将它的API设计成模块化了，比如它将开启Web服务这个功能所有代码都放入一个http模块中 3、Node本质来说就是将相同功能的代码放入到一个.js文件中管理 这篇博客主要整理一下模块的知识模块 作用 http 开启一个Web服务，给浏览器提供服务 url 给浏览器发送请求用，还可以传递参数(GET) querystring 处理浏览器通过GET/POST发送过来的参数 path 查找文件的路径 fs 在服务器端读取文件用的 上面五大核心模块加上其它一些第三方的模块，这个时候，我们就可以做一个管理系统出来了 写代码来体验我们Node中模块化开发思想开启web服务步骤: 1、导入我们需要的核心模块(NodeJS提供的模块我们称之为核心模块) require(&apos;http&apos;) 会返回一个 http对象 2、利用获取到的核心模块的对象，创建一个server对象 3、利用server对象监听浏览器的请求，并且处理(请求-处理-响应) 4、开启web服务开始监听 获取url中的一些相关信息http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123 http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123 在我们的服务器端，想要获取一些东西 1、路径 login，获取我们路径的作用是为了知道浏览器的意图 2、传递过来的参数 zhangsan 123 为了获取我们上面需要的东西，这个时候， node提供了另外一个核心模块来解决我们这些繁琐的问题 url 使用url模块的步骤1、导入url这个核心模块 2、调用url.parse(url字符串,true)， 如果是true的话代表把我们的username=zhangsan&amp;pwd=123 字符串解析成js对象 es6ECMAScript 6 参考:http://es6.ruanyifeng.com/ 注意点: 写es6的代码最好开启严格模式，让我们在开发阶段写代码更加严谨 可以在每个js代码的最前面加上 `use strict` const&amp;letconst&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的 定义常量 const 定义变量 let 其实和var还是有区别的，const和let在作用域预解析是不会变量提升的 字符串的一些方法字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串， 其实作用相当于es5的indexOf startsWith : 判断字符串是否以什么开头，判断协议头 http:// file:// endsWith : 判断字符串是否以什么结尾，判断文件后缀名 .png .jpg .jpeg 模版字符串作用: 1、格式化字符串，以你想要的格式输出 2、模版：占位替换 语法: `` 箭头函数 E5写法 function add(x,y){ return x + y } E6写法 const add = (x,y) =&gt; { return x + y} 只有一个参数，并且函数块中只有一行代码 我们的函数参数的()可以不写 函数体的 {} return 都可以省略，如下例子 const printName = name =&gt; console.log(&quot;我的名字是 &quot;+name) printName(&quot;小白&quot;)]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SVG使用]]></title>
+    <url>%2F2016%2F06%2F30%2FSVG%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[SVG使用记录 1.绘制矩形 123456&lt;rect x="" y="" rx="" ry="" width="" height=""&gt;&lt;/rect&gt;(x, y): 左上角坐标rx: x轴圆角半径ry: y轴圆角半径width: 长度height: 高度 2.绘制圆 123&lt;circle cx="" cy="" r=""&gt;&lt;/circle&gt; (cx, cy): 圆心 r: 半径 3.绘制椭圆 1234&lt;ellipse cx="" cy="" rx="" ry=""&gt;&lt;/ellipse&gt; (cx, cy): 中心点 rx: x轴半径 ry: y轴半径 4.绘制直线 123&lt;line x1="" y1="" x2="" y2=""&gt;&lt;/line&gt; (x1, y1): 线条的起始点(x2, y2): 线条的结束点 5.绘制折线1&lt;polyline points="x1,y1 x2,y2 x3,y3 .."&gt;&lt;/polyline&gt; 6.绘制多边形 1&lt;polygon points="x1,y1 x2,y2 x3,y3 .."&gt;&lt;/polygon&gt; 7.绘制图像 1&lt;image xlink:href="" width="" height=""&gt;&lt;/image&gt; 8.绘制文本 1234&lt;text x=&quot;&quot; y=&quot;&quot; font-size=&quot;&quot; dx=&quot;&quot; dy=&quot;&quot;&gt;text&lt;/text&gt; (x, y): 文字左下角的起始坐标 dx: 横轴的偏移 dy: 纵轴的偏移 9.渐变 12345678910111213141516&lt;defs&gt;&lt;linearGradient x1="" y1="" x2="" y2=""&gt; &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;&lt;/linearGradient&gt; &lt;radialGradient cx="" cy="" r=""&gt; &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;&lt;/radialGradient&gt;&lt;/defs&gt; offset: 渐变开始的位置 0% - 100%x1: 开始横坐标y1: 开始纵坐标x2: 结束横坐标y2: 结束纵坐标cx: 外层圆心横坐标cy: 外层圆心纵坐标r: 发散的半径 10.滤镜 123456&lt;defs&gt; &lt;filter id=&quot;f1&quot;&gt; &lt;feGaussionBlur stdDeviation=&quot;3&quot;&gt; &lt;/filter&gt;&lt;/defs&gt;&lt;text filter=&quot;url(#f1)&quot;&gt;]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>SVG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zepto设置select选中兼容问题]]></title>
+    <url>%2F2016%2F05%2F10%2Fzepto%E8%AE%BE%E7%BD%AEselect%E9%80%89%E4%B8%AD%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[zepto设置select选中兼容问题在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑 1.zepto要拿到option的值需要通过下面的方法 12//拿到选中的option的 value值 var value= $("#select option").not(function()&#123; return !this.selected &#125;).val() 2.zepto 设置select选中 需要注意 12//Safari浏览器不兼容，一开始我是这样写的被坑了 $('select').find('option[value="'+key+'"]').attr('selected', true); 12// Safari浏览器兼容 $('select').find('option[value="'+key+'"]').attr('selected', 'selected');]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git管理工具的使用]]></title>
+    <url>%2F2016%2F04%2F20%2Fgit%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[说说Git 本教程朗朗上口，get it。 git是源代码管理工具，也称为版本控制工具 优势 利于团队的开发，方便后期维护，安全 对个人而言对某个功能修改操作 优势 官网下载git 根据提示，点下一步安装（一般一直点下一步就可以了） bash命令基础在学习git之前，必须先熟悉bash命令的基础用法 命令 功能 参数与 pwd 打印当前目录路径的全名称 ls 显示任意目录 所有文件 -l （显示详细信息，快捷ll=ls -l ） -a（显示隐藏文件）-d 查看目录 cd 切换文件夹 mkdir 创建文件夹 rm 删除文件 -r 子文件一起删除 -f 强制删除 touch 创建文件 date 查看时间 date -s 2017-01-1 修改时间 cat 查看文件内容 cp 复制 选择文件 复制到哪个目录 mv 重命名 移动 移动文件 复制到哪个目录，可重命名 vi vim 编辑文件 i o a 编辑模式 ecs 退出模式 ：！wq 强制保存退出 git bash 基础 命令 作用与注释 git init 当前文件夹进行初始化（被git管理） git status 查看仓库中的相关的文件状态，空文件夹不显示 git add 将指定的文件放到暂存区 ， *=全部 git commit 将暂存区的文件放到主仓库 -m 备注信息 git config user.name 设置用户名，–global 全局设置 git config user.email 设置邮箱，–global 全局设置 git push [地址] master 将本地主仓库中的代码上传到服务器中 git log 查看日志 git pull [地址] master 获取服务器文件，关联你的仓库 git diff 查看同一个文件修改了那些内容 git rm 删除某个文件 git remote add [变量名]&lt;值&gt; 可以保存变量,一般保存仓库地址 git remote 查看存在哪些变量 git remote remove [变量名] 删除变量 git log –oneline 简洁的日志显示，方便查看版本号 git reset –hard [版本号] 回溯到某个版本号 git reflog 查看历史记录的版本号id git clone [地址] 克隆远程库 git checkout – 把对文件的修改在暂存区全部取消 git branch 查看当前分支 git branch [分支名] 创建新分支 git checkout [分支名] 切换到指定分支下面去 git merge [分支名] -m [备注信息] 将指定分支合并到当前分支下 git branch -d [分支名] 删除指定的分支 配置SSH连接github 在本地生成秘钥：ssh-keygen -t rsa 找到秘钥生成的目录，将公钥放到Github中 a、github点击右上角人物头像 b、选择settings菜单 c、选择SSH相关菜单 d、选择添加一个SSH e、输入ssh的名称，已知内容（就是公钥）将公钥放入其中，保存即可 在本地测试 ssh git@github.com看看是否成功Hi chengxc! You’ve successfully authenticated, but GitHub does not provide shell access. 设置文件不让git管理1.在.git同级目录添加一个文件，叫 .gitignore 创建这个文件名的时候， a：文件名：”.gitignore.” b、bash命令：touch .gitignore 2.打开.gitignore进行编辑，一行一行的添加不需要git管理的文件 可以设置同类型的文件：.js .css 也可以设置整个目录： a/–&gt;a目录下面的所有文件 a/.js–&gt;a目录下面的所有js文件 删除服务器中的文件第一种方式： rm 文件名 git add 文件名 git add 文件名 git push 远程服务器 master 第二种方式:推荐使用 git rm 文件名 git commit -m 提交 git push 远程服务器 master 注意事项 如果删除文件由于误操作没有成功，可以通过提示删除，再push到服务器上 无论是创建分支还是合并分支时刻警醒当前位于哪个位置 不要在本地分支上push代码]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo搭建]]></title>
+    <url>%2F2016%2F03%2F23%2Fhexo%E5%90%91%E5%AF%BC%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[github 配合 hexo 搭建博客 域名推荐去万网选一个 个人网站起名简单，整洁为上。 看情况选择后缀，后缀有一定含义，比如cn代表中国 有些后缀需要备案，不推荐 服务器 这个不是必须的 有自己的服务器的话配置好环境和服务，自己管理还要维护 一般免费的不稳定，稳定的不免费 所以推荐用第三方托管的方式 比较好 需要把域名解析到服务器 只需要把你的域名解析成 github.io 的ip（可以用cmd ping 你的gitbub.io 得到ip） 并在github.io 的 settings 设置 Custom domain 为 你的域名 （例如：zeroxie.me） 需要写博客4.1 直接写静态页面（不会有人这么做）4.2 使用现有的一些博客框架（WordPress） 稍微懂一点点PHP 要回搭建PHP的运行环境，还要会配置MySQL4.3 直接自己动手写一个博客系统 需要懂一门后台语言，要懂数据库操作，要懂服务器相关的知识 4.4 现成的框架，Hexo， 你只需要写MarkDown文件，hexo这种框架会自动帮你把所有的markdown文件转换成html，并且帮你将所有的文章进行归类 github提供了静态页面托管服务， github给每一个用户都提供了一个项目的静态页面托管服务，但是一定要注意，一个账户只有一个项目的名额 github静态页面托管服务会给你提供一个域名，让你访问自己的网站 服务器也是github的服务器 Hexo的安装npm install hexo-cli -g Hexo的使用hexo init 初始化博客 hexo new “文章名” 新建一篇文章 sources/_posts/…. hexo g 将md文件生成html hexo s 在本地预览已经编辑好的博客内容 要把生成好的网站发布到 github上 需要注册github账号 在github中创建一个库 库名 github用户名.github.io 配置在博客文件根目录中的_congif.yml文件 deploy: type: git repo: 就是刚才创建的那个库的地址（复制https的地址） branch: master 在博客根目录下执行 npm install hexo-deployer-git –save 在public目录下执行 git init命令 在public目录下执行 hexo d 命令 大功告成 可以通过 github用户名.github.io 直接访问你的博客了]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>github，hexo</tag>
+      </tags>
+  </entry>
+</search>

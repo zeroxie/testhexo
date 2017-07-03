@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>码诗园</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-03T02:50:50.003Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>谢 晓 驰</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NodeJs学习记录一</title>
+    <link href="http://yoursite.com/2016/09/10/NodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
+    <id>http://yoursite.com/2016/09/10/NodeJS学习记录一/</id>
+    <published>2016-09-10T11:10:20.000Z</published>
+    <updated>2017-07-03T02:50:50.003Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJS的基本概念"><a href="#NodeJS的基本概念" class="headerlink" title="NodeJS的基本概念"></a>NodeJS的基本概念</h1><h2 id="NodeJS是什么？"><a href="#NodeJS是什么？" class="headerlink" title="NodeJS是什么？"></a>NodeJS是什么？</h2><a id="more"></a>
+<p>​       <a href="https://nodejs.org/en/" target="_blank" rel="external">Node官网</a><br>    官网介绍：<br>    Node.js® is a JavaScript runtime built on<br>    Chrome’s V8 JavaScript engine. Node.js uses<br>    an event-driven, non-blocking I/O model that<br>    makes it lightweight and efficient. Node.js’<br>    package ecosystem, npm, is the largest<br>    ecosystem of open source libraries in the<br>    world.</p>
+<pre><code>js能做什么事?
+    js ---&gt; 浏览器中运行(面向过程---&gt;面向对象)
+    js ---&gt; 后台开发
+
+NodeJS就是使用js代码，来做后台开发
+使用NodeJS可以开启一个Web服务，给浏览器提供数据去
+展示，并且接收浏览器提交过来的用户产生的数据，存储
+到数据库中，方便后面使用(注册)
+</code></pre><h2 id="NodeJS能做什么？"><a href="#NodeJS能做什么？" class="headerlink" title="NodeJS能做什么？"></a>NodeJS能做什么？</h2><pre><code>1、提供数据给浏览器展示
+2、保存用户提交过来的数据
+3、数据统计与分析
+</code></pre><h2 id="怎么学习比较好"><a href="#怎么学习比较好" class="headerlink" title="怎么学习比较好"></a>怎么学习比较好</h2><pre><code>1、看官方文档:
+    API怎么用，缺点，都是一些零散的API，没有一个完整的Demo
+    英语不好就别看了，全英文
+
+2、百度
+    node快速入门 node使用
+
+3、专业Node的论坛【深入学习】
+    http://cnodejs.org/
+4、出错之后的网站:
+    www.baidu.com
+    www.stackoverflow.com
+    使用的时候，搜索英文关键字
+</code></pre><hr>
+<h1 id="Node服务器软件的安装与配置"><a href="#Node服务器软件的安装与配置" class="headerlink" title="Node服务器软件的安装与配置"></a>Node服务器软件的安装与配置</h1><h2 id="Node-exe的安装"><a href="#Node-exe的安装" class="headerlink" title="Node.exe的安装"></a>Node.exe的安装</h2><pre><code>一直下一步就可以了
+
+检测是否安装成功 node -v
+
+另外一种安装node的方式
+    nvm这个软件来安装
+    node version manger,如果你想同时安装多个node版本
+
+    教程:http://www.jianshu.com/p/07c3456e875a
+
+前提:
+    如果使用我们的nvm安装node，那原先的node得干掉
+
+步骤:
+    1、安装nvm这个软件:
+        https://github.com/coreybutler/nvm-windows/releases
+
+    2、使用上面装好的nvm软件，安装我们需要的node版本了
+        指令:
+        nvm install 具体的版本号就行了(https://nodejs.org/en/download/releases/)
+
+        nvm uninstall 具体的版本号
+
+        nvm list 查看当前安装了哪些版本
+
+        nvm use 具体版本号，切换到某个版本
+
+
+建议:
+    你安装一个高一点的稳定的版本即可，因为我们的软件都是向下兼容
+</code></pre><hr>
+<h1 id="系统环境变量及其作用"><a href="#系统环境变量及其作用" class="headerlink" title="系统环境变量及其作用"></a>系统环境变量及其作用</h1><h2 id="系统环境变量"><a href="#系统环境变量" class="headerlink" title="系统环境变量"></a>系统环境变量</h2><pre><code>每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作
+
+那配置了环境变量能做到什么事呢？
+    在我们终端的任何一个目录下，都可以访问，配置在系统环境变量里面的可执行文件
+
+如何将一个软件的可执行文件配置在我们的系统环境变量中?
+    步骤：
+        1、拷贝一个可执行文件所在的目录，比如node.exe所在的目录 `C:\Program Files\nodejs`
+
+        2、去系统(次计算机右键属性) &gt; 高级系统设置 &gt; 高级 &gt; 环境变量 &gt; 系统变量 &gt; Path &gt; 填写上你的目录
+
+注意事项:
+    如果更改了系统的环境变量，就必须把终端重新启动
+</code></pre><hr>
+<h1 id="启动node-exe执行js代码"><a href="#启动node-exe执行js代码" class="headerlink" title="启动node.exe执行js代码"></a>启动node.exe执行js代码</h1><h2 id="启动-相当于启动Apache服务器"><a href="#启动-相当于启动Apache服务器" class="headerlink" title="启动(相当于启动Apache服务器)"></a>启动(相当于启动Apache服务器)</h2><pre><code>1、在我们的node的安装目录下，去双击我们node.exe
+
+2、在终端输入 node即可 node.exe
+</code></pre><h2 id="退出我们的node-exe"><a href="#退出我们的node-exe" class="headerlink" title="退出我们的node.exe"></a>退出我们的node.exe</h2><pre><code>1、在终端中输入.exit
+
+2、连续按住两次 CTRL + C
+</code></pre><h2 id="怎么去执行js代码"><a href="#怎么去执行js代码" class="headerlink" title="怎么去执行js代码"></a>怎么去执行js代码</h2><pre><code>1、直接在启动的node.exe中写代码(在开启的`REPL`环境中写代码执行)【了解】
+    缺点:
+        书写不方便，阅读起来也不方便
+        因为在我们的cmd中写的代码，是放在内存中的，一旦我们退出了node.exe，原先写的代码都没有了
+
+2、把我们写好的代码放在一个单独的js文件中去执行
+    执行的时候，通过node.exe去执行，具体的写法是这样。（重点）
+
+    在终端中输入 node.exe 你要去执行的文件名称
+
+    注意点:
+        1、我们js代码不是在终端中运行的，只是借助终端去启动我们node.exe，并且最终将结果展现在终端里面而已
+
+        2、在运行时候，首先你的终端的目录得切换到你要执行的文件的目录下面去，然后使用node 文件名称执行即可
+
+    我们nodejs的代码是在一个叫做`REPL`环境中，执行的
+</code></pre><hr>
+<h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><h2 id="JS的执行"><a href="#JS的执行" class="headerlink" title="JS的执行"></a>JS的执行</h2><pre><code>执行js在浏览器端，我是是要依靠浏览器(js的解析引擎)
+
+在服务器端 nodejs开启的REPL环境
+
+官网的解释:
+    参考:http://shouce.qdfuns.com/nodejs/repl.html
+
+REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块内容空间里面就可以解释执行我们的js代码
+
+例如:
+    在终端中输入了 node abc.js 做的事情就是，将abc.js中写好的js的逻辑代码扔在启动好的node的内容空间中去运行，我们把启动好的node的这块内存空间称之为REPL环境
+</code></pre><hr>
+<h1 id="模块化思想"><a href="#模块化思想" class="headerlink" title="模块化思想"></a>模块化思想</h1><h2 id="为什么前端需要有模块化"><a href="#为什么前端需要有模块化" class="headerlink" title="为什么前端需要有模块化"></a>为什么前端需要有模块化</h2><pre><code>1、解决全局变量名污染的问题
+2、把相同功能的代码放在一个模块(一个js文件中)方便后期维护
+</code></pre><h2 id="NodeJS中是如何体现模块化"><a href="#NodeJS中是如何体现模块化" class="headerlink" title="NodeJS中是如何体现模块化"></a>NodeJS中是如何体现模块化</h2><pre><code>ecmascript5 var function
+
+1、Node本身是基于CommonJS规范，
+参考:http://javascript.ruanyifeng.com/nodejs/module.html#toc0
+
+2、Node作者在设计这门语言的时候，就严格按照CommonJS的规范，
+将它的API设计成模块化了，比如它将开启Web服务这个功能所有代码都放入一个http模块中
+
+3、Node本质来说就是将相同功能的代码放入到一个.js文件中管理
+</code></pre><h2 id="这篇博客主要整理一下模块的知识"><a href="#这篇博客主要整理一下模块的知识" class="headerlink" title="这篇博客主要整理一下模块的知识"></a>这篇博客主要整理一下模块的知识</h2><pre><code>模块          作用
+http      开启一个Web服务，给浏览器提供服务
+url          给浏览器发送请求用，还可以传递参数(GET)
+querystring 处理浏览器通过GET/POST发送过来的参数
+path      查找文件的路径
+fs          在服务器端读取文件用的
+
+上面五大核心模块加上其它一些第三方的模块，这个时候，我们就可以做一个管理系统出来了
+</code></pre><hr>
+<h1 id="写代码来体验我们Node中模块化开发思想"><a href="#写代码来体验我们Node中模块化开发思想" class="headerlink" title="写代码来体验我们Node中模块化开发思想"></a>写代码来体验我们Node中模块化开发思想</h1><h2 id="开启web服务"><a href="#开启web服务" class="headerlink" title="开启web服务"></a>开启web服务</h2><pre><code>步骤:
+    1、导入我们需要的核心模块(NodeJS提供的模块我们称之为核心模块)
+    require(&apos;http&apos;) 会返回一个 http对象
+
+    2、利用获取到的核心模块的对象，创建一个server对象
+
+    3、利用server对象监听浏览器的请求，并且处理(请求-处理-响应)
+
+    4、开启web服务开始监听
+</code></pre><h2 id="获取url中的一些相关信息"><a href="#获取url中的一些相关信息" class="headerlink" title="获取url中的一些相关信息"></a>获取url中的一些相关信息</h2><pre><code>http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123
+
+http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123
+
+在我们的服务器端，想要获取一些东西
+
+1、路径 login，获取我们路径的作用是为了知道浏览器的意图
+2、传递过来的参数 zhangsan 123
+
+为了获取我们上面需要的东西，这个时候，
+node提供了另外一个核心模块来解决我们这些繁琐的问题 url
+</code></pre><h2 id="使用url模块的步骤"><a href="#使用url模块的步骤" class="headerlink" title="使用url模块的步骤"></a>使用url模块的步骤</h2><pre><code>1、导入url这个核心模块
+
+
+2、调用url.parse(url字符串,true)，
+如果是true的话代表把我们的username=zhangsan&amp;pwd=123 字符串解析成js对象
+</code></pre><hr>
+<h1 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h1><pre><code>ECMAScript 6
+参考:http://es6.ruanyifeng.com/
+
+注意点:    
+    写es6的代码最好开启严格模式，让我们在开发阶段写代码更加严谨
+    可以在每个js代码的最前面加上 `use strict`
+</code></pre><h2 id="const-amp-let"><a href="#const-amp-let" class="headerlink" title="const&amp;let"></a>const&amp;let</h2><pre><code>const&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的
+
+定义常量 const 
+
+定义变量 let
+</code></pre><p>   其实和var还是有区别的，const和let在作用域预解析是不会变量提升的</p>
+<h2 id="字符串的一些方法"><a href="#字符串的一些方法" class="headerlink" title="字符串的一些方法"></a>字符串的一些方法</h2><pre><code>字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串，
+其实作用相当于es5的indexOf
+
+startsWith : 判断字符串是否以什么开头，判断协议头 http:// file://
+
+endsWith : 判断字符串是否以什么结尾，判断文件后缀名 .png .jpg .jpeg
+</code></pre><h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><pre><code>作用:
+    1、格式化字符串，以你想要的格式输出
+    2、模版：占位替换
+
+语法:
+    ``
+</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>   E5写法<br>    function add(x,y){<br>          return x + y<br>          }<br>   E6写法<br>    const add = (x,y) =&gt; {<br>    return x + y}<br>    只有一个参数，并且函数块中只有一行代码<br>    我们的函数参数的<code>()</code>可以不写<br>    函数体的 <code>{}</code> return 都可以省略，如下例子</p>
+<pre><code>const printName = name =&gt; console.log(&quot;我的名字是 &quot;+name)
+printName(&quot;小白&quot;)
+</code></pre><hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NodeJS的基本概念&quot;&gt;&lt;a href=&quot;#NodeJS的基本概念&quot; class=&quot;headerlink&quot; title=&quot;NodeJS的基本概念&quot;&gt;&lt;/a&gt;NodeJS的基本概念&lt;/h1&gt;&lt;h2 id=&quot;NodeJS是什么？&quot;&gt;&lt;a href=&quot;#NodeJS是什么？&quot; class=&quot;headerlink&quot; title=&quot;NodeJS是什么？&quot;&gt;&lt;/a&gt;NodeJS是什么？&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVG使用</title>
+    <link href="http://yoursite.com/2016/06/30/SVG%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/06/30/SVG使用/</id>
+    <published>2016-06-30T06:19:20.000Z</published>
+    <updated>2017-06-07T13:39:03.446Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SVG使用记录"><a href="#SVG使用记录" class="headerlink" title="SVG使用记录"></a>SVG使用记录</h2><a id="more"></a>
+<p>1.绘制矩形</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;rect x=<span class="string">""</span> y=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/rect&gt;</div><div class="line">(x, y): 左上角坐标</div><div class="line">rx: x轴圆角半径</div><div class="line">ry: y轴圆角半径</div><div class="line">width: 长度</div><div class="line">height: 高度</div></pre></td></tr></table></figure>
+<p>2.绘制圆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx=<span class="string">""</span> cy=<span class="string">""</span> r=<span class="string">""</span>&gt;&lt;/circle&gt;</div><div class="line"> (cx, cy): 圆心</div><div class="line"> r: 半径</div></pre></td></tr></table></figure>
+<p>3.绘制椭圆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx=<span class="string">""</span> cy=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span>&gt;&lt;/ellipse&gt;</div><div class="line">    (cx, cy): 中心点</div><div class="line">    rx: x轴半径</div><div class="line">    ry: y轴半径</div></pre></td></tr></table></figure>
+<p>4.绘制直线</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;line x1=<span class="string">""</span> y1=<span class="string">""</span> x2=<span class="string">""</span> y2=<span class="string">""</span>&gt;&lt;/line&gt; </div><div class="line">(x1, y1): 线条的起始点</div><div class="line">(x2, y2): 线条的结束点</div></pre></td></tr></table></figure>
+<p>5.绘制折线<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polyline&gt;</div></pre></td></tr></table></figure></p>
+<p>6.绘制多边形</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polygon&gt;</div></pre></td></tr></table></figure>
+<p>7.绘制图像</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;image xlink:href=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/image&gt;</div></pre></td></tr></table></figure>
+<p>8.绘制文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;text x=&quot;&quot; y=&quot;&quot;  font-size=&quot;&quot; dx=&quot;&quot; dy=&quot;&quot;&gt;text&lt;/text&gt;</div><div class="line">   (x, y): 文字左下角的起始坐标</div><div class="line">   dx: 横轴的偏移</div><div class="line">   dy: 纵轴的偏移</div></pre></td></tr></table></figure>
+<p>9.渐变</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;defs&gt;</div><div class="line">&lt;linearGradient x1="" y1="" x2="" y2=""&gt;</div><div class="line">  &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;</div><div class="line">&lt;/linearGradient&gt;</div><div class="line">   &lt;radialGradient cx="" cy="" r=""&gt;</div><div class="line">  &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;</div><div class="line">&lt;/radialGradient&gt;</div><div class="line">&lt;/defs&gt; </div><div class="line">offset: 渐变开始的位置 0% - 100%</div><div class="line">x1: 开始横坐标</div><div class="line">y1: 开始纵坐标</div><div class="line">x2: 结束横坐标</div><div class="line">y2: 结束纵坐标</div><div class="line">cx: 外层圆心横坐标</div><div class="line">cy: 外层圆心纵坐标</div><div class="line">r: 发散的半径</div></pre></td></tr></table></figure>
+<p>10.滤镜</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;defs&gt;</div><div class="line">	&lt;filter id=&quot;f1&quot;&gt;</div><div class="line">    	&lt;feGaussionBlur stdDeviation=&quot;3&quot;&gt;</div><div class="line">	&lt;/filter&gt;</div><div class="line">&lt;/defs&gt;</div><div class="line">&lt;text filter=&quot;url(#f1)&quot;&gt;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;SVG使用记录&quot;&gt;&lt;a href=&quot;#SVG使用记录&quot; class=&quot;headerlink&quot; title=&quot;SVG使用记录&quot;&gt;&lt;/a&gt;SVG使用记录&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="SVG" scheme="http://yoursite.com/tags/SVG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zepto设置select选中兼容问题</title>
+    <link href="http://yoursite.com/2016/05/10/zepto%E8%AE%BE%E7%BD%AEselect%E9%80%89%E4%B8%AD%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/05/10/zepto设置select选中兼容问题/</id>
+    <published>2016-05-10T13:00:36.000Z</published>
+    <updated>2017-06-05T12:02:18.968Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="zepto设置select选中兼容问题"><a href="#zepto设置select选中兼容问题" class="headerlink" title="zepto设置select选中兼容问题"></a>zepto设置select选中兼容问题</h1><p>在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑</p>
+<a id="more"></a>
+<p>1.zepto要拿到option的值需要通过下面的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//拿到选中的option的 value值</span></div><div class="line">   <span class="keyword">var</span>  value= $(<span class="string">"#select option"</span>).not(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> !<span class="keyword">this</span>.selected &#125;).val()</div></pre></td></tr></table></figure>
+<p>2.zepto 设置select选中 需要注意</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Safari浏览器不兼容，一开始我是这样写的被坑了 </span></div><div class="line">$(<span class="string">'select'</span>).find(<span class="string">'option[value="'</span>+key+<span class="string">'"]'</span>).attr(<span class="string">'selected'</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Safari浏览器兼容 </span></div><div class="line">$(<span class="string">'select'</span>).find(<span class="string">'option[value="'</span>+key+<span class="string">'"]'</span>).attr(<span class="string">'selected'</span>, <span class="string">'selected'</span>);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;zepto设置select选中兼容问题&quot;&gt;&lt;a href=&quot;#zepto设置select选中兼容问题&quot; class=&quot;headerlink&quot; title=&quot;zepto设置select选中兼容问题&quot;&gt;&lt;/a&gt;zepto设置select选中兼容问题&lt;/h1&gt;&lt;p&gt;在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git管理工具的使用</title>
+    <link href="http://yoursite.com/2016/04/20/git%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/04/20/git管理工具的使用/</id>
+    <published>2016-04-20T13:59:36.000Z</published>
+    <updated>2017-06-07T00:28:55.714Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="说说Git"><a href="#说说Git" class="headerlink" title="说说Git"></a>说说Git</h3><a id="more"></a>
+<p>   本教程朗朗上口，get  it。</p>
+<ol>
+<li><p>git是源代码管理工具，也称为版本控制工具</p>
+</li>
+<li><p>优势</p>
+<ul>
+<li><p>利于团队的开发，方便后期维护，安全</p>
+</li>
+<li><p>对个人而言对某个功能修改操作</p>
+</li>
+</ul>
+</li>
+<li><p>优势</p>
+<ul>
+<li>官网下载git </li>
+<li>根据提示，点下一步安装（一般一直点下一步就可以了）</li>
+</ul>
+</li>
+</ol>
+<h3 id="bash命令基础"><a href="#bash命令基础" class="headerlink" title="bash命令基础"></a>bash命令基础</h3><p>在学习git之前，必须先熟悉bash命令的基础用法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:left">参数与</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pwd</td>
+<td style="text-align:center">打印当前目录路径的全名称</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">ls</td>
+<td style="text-align:center">显示任意目录 所有文件</td>
+<td style="text-align:left">-l （显示详细信息，快捷ll=ls -l ）  -a（显示隐藏文件）-d 查看目录</td>
+</tr>
+<tr>
+<td style="text-align:center">cd</td>
+<td style="text-align:center">切换文件夹</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir</td>
+<td style="text-align:center">创建文件夹</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">rm</td>
+<td style="text-align:center">删除文件</td>
+<td style="text-align:left">-r 子文件一起删除   -f 强制删除</td>
+</tr>
+<tr>
+<td style="text-align:center">touch</td>
+<td style="text-align:center">创建文件</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">查看时间</td>
+<td style="text-align:left">date -s 2017-01-1 修改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">cat</td>
+<td style="text-align:center">查看文件内容</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">cp</td>
+<td style="text-align:center">复制</td>
+<td style="text-align:left">选择文件    复制到哪个目录</td>
+</tr>
+<tr>
+<td style="text-align:center">mv</td>
+<td style="text-align:center">重命名  移动</td>
+<td style="text-align:left">移动文件     复制到哪个目录，可重命名</td>
+</tr>
+<tr>
+<td style="text-align:center">vi  vim</td>
+<td style="text-align:center">编辑文件</td>
+<td style="text-align:left">i o a 编辑模式  ecs 退出模式  ：！wq 强制保存退出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="git-bash-基础"><a href="#git-bash-基础" class="headerlink" title="git bash 基础"></a>git bash 基础</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用与注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">git init</td>
+<td style="text-align:center">当前文件夹进行初始化（被git管理）</td>
+</tr>
+<tr>
+<td style="text-align:center">git status</td>
+<td style="text-align:center">查看仓库中的相关的文件状态，空文件夹不显示</td>
+</tr>
+<tr>
+<td style="text-align:center">git add <file></file></td>
+<td style="text-align:center">将指定的文件放到暂存区 ， *=全部</td>
+</tr>
+<tr>
+<td style="text-align:center">git commit</td>
+<td style="text-align:center">将暂存区的文件放到主仓库 -m 备注信息</td>
+</tr>
+<tr>
+<td style="text-align:center">git config user.name</td>
+<td style="text-align:center">设置用户名，–global 全局设置</td>
+</tr>
+<tr>
+<td style="text-align:center">git config user.email</td>
+<td style="text-align:center">设置邮箱，–global 全局设置</td>
+</tr>
+<tr>
+<td style="text-align:center">git push [地址] master</td>
+<td style="text-align:center">将本地主仓库中的代码上传到服务器中</td>
+</tr>
+<tr>
+<td style="text-align:center">git log</td>
+<td style="text-align:center">查看日志</td>
+</tr>
+<tr>
+<td style="text-align:center">git pull [地址] master</td>
+<td style="text-align:center">获取服务器文件，关联你的仓库</td>
+</tr>
+<tr>
+<td style="text-align:center">git diff  <file></file></td>
+<td style="text-align:center">查看同一个文件修改了那些内容</td>
+</tr>
+<tr>
+<td style="text-align:center">git rm <file></file></td>
+<td style="text-align:center">删除某个文件</td>
+</tr>
+<tr>
+<td style="text-align:center">git remote add [变量名]&lt;值&gt;</td>
+<td style="text-align:center">可以保存<code>变量</code>,一般保存仓库地址</td>
+</tr>
+<tr>
+<td style="text-align:center">git remote</td>
+<td style="text-align:center">查看存在哪些<code>变量</code></td>
+</tr>
+<tr>
+<td style="text-align:center">git remote remove [变量名]</td>
+<td style="text-align:center">删除<code>变量</code></td>
+</tr>
+<tr>
+<td style="text-align:center">git log –oneline</td>
+<td style="text-align:center">简洁的日志显示，方便查看版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">git reset –hard [版本号]</td>
+<td style="text-align:center">回溯到某个版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">git reflog</td>
+<td style="text-align:center">查看历史记录的版本号id</td>
+</tr>
+<tr>
+<td style="text-align:center">git clone  [地址]</td>
+<td style="text-align:center">克隆远程库</td>
+</tr>
+<tr>
+<td style="text-align:center">git checkout – <file></file></td>
+<td style="text-align:center">把对文件的修改在暂存区全部取消</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch</td>
+<td style="text-align:center">查看当前分支</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch [分支名]</td>
+<td style="text-align:center">创建新分支</td>
+</tr>
+<tr>
+<td style="text-align:center">git checkout [分支名]</td>
+<td style="text-align:center">切换到指定分支下面去</td>
+</tr>
+<tr>
+<td style="text-align:center">git merge [分支名] -m [备注信息]</td>
+<td style="text-align:center">将指定分支合并到当前分支下</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch -d [分支名]</td>
+<td style="text-align:center">删除指定的分支</td>
+</tr>
+</tbody>
+</table>
+<h3 id="配置SSH连接github"><a href="#配置SSH连接github" class="headerlink" title="配置SSH连接github"></a>配置SSH连接github</h3><ol>
+<li>在本地生成秘钥：ssh-keygen -t rsa</li>
+<li>找到秘钥生成的目录，将公钥放到Github中<br> a、github点击右上角人物头像<br> b、选择settings菜单<br> c、选择SSH相关菜单<br> d、选择添加一个SSH<br> e、输入ssh的名称，已知内容（就是公钥）将公钥放入其中，保存即可</li>
+<li>在本地测试 ssh git@github.com看看是否成功<br>Hi chengxc! You’ve successfully authenticated, but GitHub does not provide shell access.</li>
+</ol>
+<h3 id="设置文件不让git管理"><a href="#设置文件不让git管理" class="headerlink" title="设置文件不让git管理"></a>设置文件不让git管理</h3><p>1.在.git同级目录添加一个文件，叫 .gitignore<br>    创建这个文件名的时候，<br>        a：文件名：”.gitignore.”<br>        b、bash命令：touch .gitignore</p>
+<p>2.打开.gitignore进行编辑，一行一行的添加不需要git管理的文件<br>    可以设置同类型的文件：<em>.js </em>.css<br>    也可以设置整个目录：<br>        a/<em>–&gt;a目录下面的所有文件<br>        a/</em>.js–&gt;a目录下面的所有js文件</p>
+<h3 id="删除服务器中的文件"><a href="#删除服务器中的文件" class="headerlink" title="删除服务器中的文件"></a>删除服务器中的文件</h3><h4 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h4><ul>
+<li><p>rm 文件名</p>
+</li>
+<li><p>git add 文件名</p>
+</li>
+<li><p>git add 文件名</p>
+</li>
+<li><p>git push 远程服务器 master</p>
+</li>
+</ul>
+<h4 id="第二种方式-推荐使用"><a href="#第二种方式-推荐使用" class="headerlink" title="第二种方式:推荐使用"></a>第二种方式:推荐使用</h4><ul>
+<li><p>git rm 文件名</p>
+</li>
+<li><p>git commit -m 提交</p>
+</li>
+<li><p>git push 远程服务器 master</p>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>如果删除文件由于误操作没有成功，可以通过提示删除，再push到服务器上 </li>
+<li>无论是创建分支还是合并分支时刻警醒当前位于哪个位置</li>
+<li>不要在本地分支上push代码</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;说说Git&quot;&gt;&lt;a href=&quot;#说说Git&quot; class=&quot;headerlink&quot; title=&quot;说说Git&quot;&gt;&lt;/a&gt;说说Git&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="bash" scheme="http://yoursite.com/tags/bash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建</title>
+    <link href="http://yoursite.com/2016/03/23/hexo%E5%90%91%E5%AF%BC%E7%AF%87/"/>
+    <id>http://yoursite.com/2016/03/23/hexo向导篇/</id>
+    <published>2016-03-23T04:10:36.000Z</published>
+    <updated>2017-06-07T14:29:14.455Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="github-配合-hexo-搭建博客"><a href="#github-配合-hexo-搭建博客" class="headerlink" title="github 配合 hexo 搭建博客"></a>github 配合 hexo 搭建博客</h1><a id="more"></a>
+<ol>
+<li><p>域名推荐去万网选一个</p>
+<ul>
+<li>个人网站起名简单，整洁为上。</li>
+<li>看情况选择后缀，后缀有一定含义，比如cn代表中国</li>
+<li>有些后缀需要备案，不推荐</li>
+</ul>
+</li>
+<li><p>服务器 </p>
+<ul>
+<li>这个不是必须的</li>
+<li>有自己的服务器的话配置好环境和服务，自己管理还要维护</li>
+<li>一般免费的不稳定，稳定的不免费</li>
+<li>所以推荐用第三方托管的方式 比较好  </li>
+</ul>
+</li>
+<li><p>需要把域名解析到服务器</p>
+<p> 只需要把你的域名解析成 github.io 的ip（可以用cmd  ping 你的gitbub.io 得到ip） </p>
+<p>并在github.io 的 settings  设置 Custom domain 为 你的域名 （例如：zeroxie.me）</p>
+</li>
+<li><p>需要写博客<br>4.1 直接写静态页面（不会有人这么做）<br>4.2 使用现有的一些博客框架（WordPress） 稍微懂一点点PHP 要回搭建PHP的运行环境，还要会配置MySQL<br>4.3 直接自己动手写一个博客系统 需要懂一门后台语言，要懂数据库操作，要懂服务器相关的知识</p>
+<p>4.4 现成的框架，Hexo， 你只需要写MarkDown文件，hexo这种框架会自动帮你把所有的markdown文件转换成html，并且帮你将所有的文章进行归类</p>
+</li>
+</ol>
+<ol>
+<li>github提供了静态页面托管服务， github给每一个用户都提供了一个项目的静态页面托管服务，但是一定要注意，一个账户只有一个项目的名额</li>
+<li>github静态页面托管服务会给你提供一个域名，让你访问自己的网站</li>
+<li>服务器也是github的服务器</li>
+</ol>
+<h1 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h1><p>npm install hexo-cli -g</p>
+<h1 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h1><p>hexo init   初始化博客</p>
+<p>hexo new “文章名”  新建一篇文章 sources/_posts/….</p>
+<p>hexo g 将md文件生成html</p>
+<p>hexo s 在本地预览已经编辑好的博客内容</p>
+<h2 id="要把生成好的网站发布到-github上"><a href="#要把生成好的网站发布到-github上" class="headerlink" title="要把生成好的网站发布到 github上"></a>要把生成好的网站发布到 github上</h2><ol>
+<li><p>需要注册github账号</p>
+</li>
+<li><p>在github中创建一个库 库名  github用户名.github.io</p>
+</li>
+<li><p>配置在博客文件根目录中的_congif.yml文件</p>
+</li>
+</ol>
+<p>   deploy:<br>     type: git<br>     repo: 就是刚才创建的那个库的地址（复制https的地址）<br>     branch: master</p>
+<ol>
+<li><p>在博客根目录下执行 npm install hexo-deployer-git –save</p>
+</li>
+<li><p>在public目录下执行 git init命令</p>
+</li>
+<li><p>在public目录下执行 hexo d 命令</p>
+</li>
+</ol>
+<p>大功告成 可以通过 github用户名.github.io 直接访问你的博客了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;github-配合-hexo-搭建博客&quot;&gt;&lt;a href=&quot;#github-配合-hexo-搭建博客&quot; class=&quot;headerlink&quot; title=&quot;github 配合 hexo 搭建博客&quot;&gt;&lt;/a&gt;github 配合 hexo 搭建博客&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+    
+      <category term="github，hexo" scheme="http://yoursite.com/tags/github%EF%BC%8Chexo/"/>
+    
+  </entry>
+  
+</feed>
